@@ -1,7 +1,7 @@
 const socket = io();
 
 socket.on("connect", () => {
-    console.log("Connected to the server");
+    console.log(socket.id);
 });
 
 if (navigator.geolocation) {

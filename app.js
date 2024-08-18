@@ -12,14 +12,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 io.on('connection', (socket) => {
   socket.on('sendLocation', (data) => {
-    console.log(data);
     io.emit('recieveLocation', {id : socket.id, ...data});
   });
   socket.on('disconnect', () => {
-    console.log('Disconnected from the server');
+    console.log(socket.id+" Disconnected");
     io.emit('userDisconnected', socket.id);
   });
-  console.log('New WS Connection');
 });
 
 app.get('/', (req, res) => {
